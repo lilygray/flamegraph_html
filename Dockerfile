@@ -13,6 +13,7 @@ WORKDIR /app
 
 # Install app dependencies
 RUN \
+    npm install d3 && \
     npm install d3-flame-graph --save
 
 # Set up HTML
