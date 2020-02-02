@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+	<head>
+		  <link rel="stylesheet" type="text/css" href="node_modules/d3-flame-graph/dist/d3-flamegraph.css">
+	</head>
+	<body>
+		<div id="chart"></div>
+		<script type="text/javascript" src="node_modules/d3/d3.js"></script>
+	      	<script type="text/javascript" src="node_modules/d3-tip/index.js"></script>
+	       	<script type="text/javascript" src="node_modules/d3-flame-graph/dist/d3-flamegraph.js"></script>
+		<script type="text/javascript">
+			var flamegraph = d3.flamegraph()
+    					.width(960);
+			d3.json("read.json", function(error, data) {
+				if (error) return console.warn(error);
+				d3.select("#chart")
+					.datum(data)
+					.call(flamegraph)
+			});
+		</script>
+	</body>
+</html>
+
