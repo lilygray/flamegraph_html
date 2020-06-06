@@ -4,6 +4,7 @@
 		  <link rel="stylesheet" type="text/css" href="node_modules/d3-flame-graph/dist/d3-flamegraph.css">
 	</head>
 	<body>
+<!--
 	<p>Read ops</p>
 	<div id="read"></div>
 	<p>Write ops</p>
@@ -16,15 +17,22 @@
 	<div id="alloc"></div>
 	<p>Free ops</p>
 	<div id="free"></div>
+-->
+    <p>Read cycles</p>
+	<div id="read"></div>
+	<p>Write cycles</p>
+	<div id="write"></div>
+	<p>Call cycles</p>
+	<div id="call"></div>
 		<script type="text/javascript" src="node_modules/d3/dist/d3.js"></script>
 	      	<script type="text/javascript" src="node_modules/d3-tip/dist/index.js"></script>
 	       	<script type="text/javascript" src="node_modules/d3-flame-graph/dist/d3-flamegraph.js"></script>
 		<script type="text/javascript">
-			var readgraph = d3.flamegraph()
+/*			var readgraph = d3.flamegraph()
     					.width(960);
 			d3.json("read.json")
 			.then(function(data) {
-/*				if (error) return console.warn(error);*/
+
 				d3.select("#read")
 					.datum(data)
 					.call(readgraph)
@@ -33,7 +41,7 @@
     					.width(960);
 			d3.json("write.json")
 			.then(function(data) {
-/*				if (error) return console.warn(error);*/
+
 				d3.select("#write")
 					.datum(data)
 					.call(writegraph)
@@ -42,7 +50,7 @@
     					.width(960);
 			d3.json("call.json")
 			.then(function(data) {
-/*				if (error) return console.warn(error);*/
+
 				d3.select("#call")
 					.datum(data)
 					.call(callgraph)
@@ -51,7 +59,7 @@
     					.width(960);
 			d3.json("return.json")
 			.then(function(data) {
-/*				if (error) return console.warn(error);*/
+
 				d3.select("#return")
 					.datum(data)
 					.call(returngraph)
@@ -60,7 +68,7 @@
     					.width(960);
 			d3.json("alloc.json")
 			.then(function(data) {
-/*				if (error) return console.warn(error);*/
+
 				d3.select("#alloc")
 					.datum(data)
 					.call(allocgraph)
@@ -69,10 +77,38 @@
     					.width(960);
 			d3.json("free.json")
 			.then(function(data) {
-/*				if (error) return console.warn(error);*/
+
 				d3.select("#free")
 					.datum(data)
 					.call(freegraph)
+			});
+*/
+            var readgraph = d3.flamegraph()
+    					.width(960);
+			d3.json("cycle_json/read.json")
+			.then(function(data) {
+
+				d3.select("#read")
+					.datum(data)
+					.call(readgraph)
+			});
+			var writegraph = d3.flamegraph()
+    					.width(960);
+			d3.json("cycle_json/write.json")
+			.then(function(data) {
+
+				d3.select("#write")
+					.datum(data)
+					.call(writegraph)
+			});
+			var callgraph = d3.flamegraph()
+    					.width(960);
+			d3.json("cycle_json/call.json")
+			.then(function(data) {
+
+				d3.select("#call")
+					.datum(data)
+					.call(callgraph)
 			});
 		</script>
 </body>
